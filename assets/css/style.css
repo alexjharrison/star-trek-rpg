@@ -1,0 +1,53 @@
+/*
+color palette
+#fdcd06	(253,205,6) yellow
+#b9c92f	(185,201,47) puke green
+#bf0f0f	(191,15,15) intense red
+#165fc5	(22,95,197) darkish blue
+#11709f	(17,112,159) lighter blue
+*/
+
+@font-face {
+    font-family: krupper; 
+    src: url(../fonts/TNG_Credits.ttf);
+}
+@font-face {
+    font-family: federation; 
+    src: url(../fonts/TNG_Title.ttf);
+}
+
+body {
+    background-image: url(../images/stars.gif);
+    font-family: krupper;
+}
+
+h1 {
+    color: #0099f6;
+    font-size: 75px;
+    font-family: federation;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    font-family: federation;
+    color: #fdcd06;
+}
+
+.tablet {
+    width: 80%;
+    padding-top: 10px;
+    margin: 20px auto;
+    background-color: #bf0f0f;
+    height: 700px;
+    border-top-left-radius: 100px 40px;
+}
+
+.main-screen {
+    border-top-left-radius: 100px 40px;
+    background-color: black;
+    margin-left: 150px;
+    width: 100% -150px;
+    height: 680px;
+    padding: 20px 0 0 30px;
+}
