@@ -8,8 +8,8 @@ color palette
 */
 
 @font-face {
-    font-family: krupper; 
-    src: url(../fonts/TNG_Credits.ttf);
+    font-family: tng-text; 
+    src: url(../fonts/Final_Frontier.ttf);
 }
 @font-face {
     font-family: federation; 
@@ -18,7 +18,8 @@ color palette
 
 body {
     background-image: url(../images/stars.gif);
-    font-family: krupper;
+    font-family: tng-text;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -30,24 +31,74 @@ h1 {
 }
 
 h2 {
-    font-family: federation;
     color: #fdcd06;
+    font-weight: bold;
+    font-size: 60px;
+    text-align:center;
+}
+
+img {
+    height: 200px;
+    margin: 30px 30px 5px 30px;
 }
 
 .tablet {
-    width: 80%;
+    width: 850px;
     padding-top: 10px;
     margin: 20px auto;
     background-color: #bf0f0f;
     height: 700px;
     border-top-left-radius: 100px 40px;
+    display: flex;
+}
+
+.left-column {
+    width: 20%;
+    height: 600px;
+    margin-top: 100px;
 }
 
 .main-screen {
     border-top-left-radius: 100px 40px;
     background-color: black;
-    margin-left: 150px;
-    width: 100% -150px;
+    width: 80%;
     height: 680px;
     padding: 20px 0 0 30px;
+}
+
+.your-player, .your-opponents, .your-score, .opponents-score, .opponents-remaining {
+    text-align: right;
+    border-top: 1px solid black;
+    padding: 5px;
+}
+
+.your-player {
+    background-color: #fdcd06;
+    height: 175px;
+}
+
+.your-score {
+    background-color: #b9c92f;
+}
+
+.your-opponents {
+    background-color: #11709f;
+    height: 175px;
+}
+
+.opponents-score {
+    background-color: #165fc5;
+}
+
+.opponents-remaining {
+}
+
+.choiceBox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content: center;
+    color: #fdcd06;
+    text-align: center;
+    font-size: 20px;
 }

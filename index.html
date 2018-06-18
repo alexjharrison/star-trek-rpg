@@ -1,21 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <title>Star Trek RPG</title>
 </head>
+
 <body>
     <h1>Star Trek RPG Game</h1>
     <div class="tablet">
         <div class="left-column">
+            <div class="your-player">
+                <p>Your Player</p>
+            </div>
+            <div class="your-score">
+                <p>Sheild Level:
+                    <span id="yourHP"></span>
+                </p>
+            </div>
+            <div class="your-opponents">
+                <p>Your opponent</p>
+            </div>
+            <div class="opponents-score">
+                <p>Sheild Level:
+                    <span id="theirHP"></span>
+                </p>
+            </div>
+            <div class="opponents-remaining">
+                <p>Opponent's Left</p>
+            </div>
 
         </div>
         <div class="main-screen">
-            <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto rem nam commodi dolorum nesciunt sit repudiandae, modi facere deleniti est rerum, provident neque id tenetur quas facilis doloremque voluptatem consequatur?</h2>
+            <h2 id="insideHeader">Pick Your Alliance</h2>
+            <div class="choiceBox">
+                <div class="choiceOne">
+                    <img src="/assets/images/federation_logo.png" alt="federation">
+                    <p id="choiceOneName" class="name">United Federation of Planets</p>
+                </div>
+
+                <div class="choiceTwo">
+                    <img src="/assets/images/dominion_logo.png" alt="dominion">
+                    <p class="choiceTwoName" class="name">Dominion</p>
+                </div>
+
+                <div class="choiceThree">
+                    <img src="assets/images/klingon-logo.png" alt="klingon">
+                    <p id="choiceThreeName" class="name">Klingon Empire</p>
+                </div>
+
+                <div class="choiceFour">
+                    <img src="assets/images/romulan_logo.png" alt="romulan">
+                    <p id="choiceFourName" class="name">Romulan Star Empire</p>
+                </div>
+            </div>
+
+
+
+
         </div>
 
 
@@ -29,4 +77,5 @@
 
     <script src="assets/js/logic.js"></script>
 </body>
+
 </html>
