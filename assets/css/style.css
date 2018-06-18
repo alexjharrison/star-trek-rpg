@@ -56,14 +56,7 @@ img {
     width: 20%;
     height: 600px;
     margin-top: 100px;
-}
-
-.main-screen {
-    border-top-left-radius: 100px 40px;
-    background-color: black;
-    width: 80%;
-    height: 680px;
-    padding: 20px 0 0 30px;
+    overflow: hidden;
 }
 
 .your-player, .your-opponents, .your-score, .opponents-score, .opponents-remaining {
@@ -91,14 +84,30 @@ img {
 }
 
 .opponents-remaining {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.main-screen {
+    border-top-left-radius: 100px 40px;
+    background-color: black;
+    width: 80%;
+    height: 680px;
+    padding: 20px 0 0 30px;
+    color:#fdcd06;
 }
 
 .choiceBox {
     display: flex;
     flex-wrap: wrap;
-    align-items:center;
-    justify-content: center;
-    color: #fdcd06;
-    text-align: center;
     font-size: 20px;
+    justify-content: center;
+    text-align: center;
+ } 
+
+.left-column img {
+    max-height:50px;
+    max-width: 50px;
+    margin: 0;
+    padding: 10px;;
 }

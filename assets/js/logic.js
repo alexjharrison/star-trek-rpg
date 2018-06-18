@@ -1,35 +1,114 @@
-var myAlliance, myCaptain, opponent, opponentCaptain;
+var myAlliance, myCaptain, myShip, opponentAlliance, opponentShip, opponentCaptain, mySheild, opponentShield, opponentsLeft;
+
 var federation = {
-    fighter: ["Picard", "Kirk", "Sisko", "Janeway"],
-    ship: ["Enterprise", "Enterprise-D", "Defiant", "Voyager" ]
+    fullName: "United Federation of Planets",
+    shortName: "federation",
+    fighter: ["Picard", "Sisko", "Janeway"],
+    ship: ["Enterprise-D", "Defiant", "Voyager"]
 }
 var klingon = {
-    fighter: ["Jean-Luc Picard", "James Kirk", "Ben Sisko", "Kathryn Janeway"],
-    ship: ["Enterprise-D", "Enterprise", "Defiant", "Voyager" ]
+    fullName: "Klingon Empire",
+    shortName: "klingon",
+    fighter: ["General Martok", "T'Kuvma", "Chancellor Gowron"],
+    ship: ["IKS Rotarran", "The Sarcophagus", "IKS Bortas"]
 }
 var romulan = {
-    fighter: ["Picard", "Kirk", "Sisko", "Janeway"],
-    ship: ["Enterprise", "Enterprise-D", "Defiant", "Voyager" ]
+    fullName: "Romulan Star Empire",
+    shortName: "romulan",
+    fighter: ["Nero", "Sela", "Commander Toreth"],
+    ship: ["Narada", "Enterprise-C", "IRW Khazara"]
 }
 var dominion = {
-    fighter: ["Changeling", "Jem'Hadar", "Weyoun", "Gul Dukat"],
-    ship: ["", "", "", "" ]
+    fullName: "Dominion",
+    shortName: "dominion",
+    fighter: ["Female Changeling", "Jem'Hadar", "Gul Dukat"],
+    ship: ["The Great Link", "Jem'Hadar Fighter", "Dukat's Bird-of-Prey"]
 }
 
+var initialScreen = function () {
+    opponentsLeft = [federation, klingon, romulan, dominion];
+    myAlliance = "";
+    opponentAlliance = "";
+    mySheild = "";
+    opponentShield = "";
+    myShip = "";
+    opponentShip = "";
+    $(".main-screen").append("<div class='choiceBox'>");
+    $(".choiceBox").html("<h2 id='insideHeader'>Pick Your Alliance</h2>");
+    opponentsLeft.forEach(element => {
+        $(".choiceBox").append("<div class='Im-" + element.shortName + "'><img src='assets/images/Logos/" + element.shortName + "_logo.png' src='" + element.fullName + "'><p>" + element.fullName + "</p></div>");
+    });
 
-$(document).ready(function() {
-    $(".choiceOne").on("click", function() {
-        alert("Federation");
+
+    update();
+}
+
+var update = function () {
+    //update 
+    if (myAlliance === "") {
+        $("#player-info").html("");
+        $("#yourHP").html("");
+    }
+    else {
+        //if you pick a side stuff goes here
+    }
+    if (opponentAlliance === "") {
+        $("#opponent-info").html("");
+        $("#theirHP").html("");
+    }
+    else {
+        //if you picked opponent it goes here
+    }
+    $("#opponentsLeft").html("");
+    opponentsLeft.forEach(element => {
+        $("#opponentsLeft").append("<img src='assets/images/Logos/" + element.shortName + "_logo.png' src = '" + element.fullName + "' id='button" + element.shortName + "'>");
     });
-    $(".choiceTwo").on("click", function() {
-        alert("Dominion");
+}
+
+var pickCapAndShip = function (which) {
+    var randomPick = Math.floor(Math.random() * 3);
+    if (which === "mine") {
+        myCaptain = myAlliance.fighter[randomPick];
+        myShip = myAlliance.ship[randomPick];
+    }
+    else if (which === "yours") {
+
+    }
+
+}
+
+var showCapAndShip = function() {
+    $(".choiceBox").html("");
+}
+
+$(document).ready(function () {
+
+    initialScreen();
+
+    $(document).on("click", ".Im-romulan", function () {
+        myAlliance = romulan;
+        pickCapAndShip("mine");
+        showCapAndShip();
     });
-    $(".choiceThree").on("click", function() {
-        alert("Klingon");
+    $(document).on("click", ".Im-klingon", function () {
+        myAlliance = klingon;
+        pickCapAndShip("mine");
+        showCapAndShip();
     });
-    $(".choiceFour").on("click", function() {
-        alert("Romulan");
+    $(document).on("click", ".Im-federation", function () {
+        myAlliance = federation;
+        pickCapAndShip("mine");
+        showCapAndShip();
     });
+    $(document).on("click", ".Im-dominion", function () {
+        myAlliance = dominion;
+        pickCapAndShip("mine");
+        showCapAndShip();
+    });
+
+
+
+
 
 
 
