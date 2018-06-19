@@ -1,14 +1,14 @@
 var myAlliance, myCaptain, myShip, opponentAlliance, opponentShip, opponentCaptain, mySheild, opponentShield, opponentsLeft, fireLevel;
 
 var federation = {
-    shieldHP: 140,
+    shieldHP: 150,
     fullName: "United Federation of Planets",
     shortName: "federation",
     fighter: ["Picard", "Sisko", "Janeway"],
     ship: ["Enterprise-D", "Defiant", "Voyager"]
 }
 var klingon = {
-    shieldHP: 160,
+    shieldHP: 150,
     fullName: "Klingon Empire",
     shortName: "klingon",
     fighter: ["Martok", "TKuvma", "Gowron"],
@@ -37,7 +37,7 @@ var initialScreen = function () {
     opponentShield = "";
     myShip = "";
     opponentShip = "";
-    fireLevel = 6;
+    fireLevel = 8;
     $(".main-screen").append("<div class='choiceBox'>");
     $(".choiceBox").html("<h2 id='insideHeader'>Pick Your Alliance</h2>");
     opponentsLeft.forEach(element => {
@@ -101,8 +101,6 @@ var showCapAndShip = function (whose) {
 
 $(document).ready(function () {
 
-    initialScreen();
-
     $(document).on("click", ".Im-romulan", function () {
         myAlliance = romulan;
         opponentsLeft[opponentsLeft.indexOf(romulan)] = "";
@@ -128,12 +126,20 @@ $(document).ready(function () {
         showCapAndShip("mine");
     });
     $(document).on("click", "#pickOpponent", function () {
-        $(".choiceBox").html("<h2 id='insideHeader'>Pick Your Opponent</h2>");
-        opponentsLeft.forEach(element => {
-            if (element !== "") {
-                $(".choiceBox").append("<div class='Theyre-" + element.shortName + "'><img src='assets/images/Logos/" + element.shortName + "_logo.png' src='" + element.fullName + "'><p>" + element.fullName + "</p></div>");
-            }
-        });
+        if($("#opponentsLeft").html()==="") {
+            //win state
+            $("#opponent-info").html("");
+            $(".choiceBox").html("<h2>You Have Won!</h2><div><img src='assets/images/Captains/" + myCaptain + ".jpg' alt='" + myCaptain + "'><img src='assets/images/Ships/" + myShip + ".jpg' alt='" + myShip + "'></div><button class='proceedButton ' id='startOver'>Play Again</button>");
+        }
+        else {
+            $(".choiceBox").html("<h2 id='insideHeader'>Pick Your Opponent</h2>");
+            opponentsLeft.forEach(element => {
+                if (element !== "") {
+                    $(".choiceBox").append("<div class='Theyre-" + element.shortName + "'><img src='assets/images/Logos/" + element.shortName + "_logo.png' src='" + element.fullName + "'><p>" + element.fullName + "</p></div>");
+                }
+            });
+        }
+
     });
     $(document).on("click", ".Theyre-romulan", function () {
         opponentAlliance = romulan;
@@ -161,25 +167,47 @@ $(document).ready(function () {
     });
     $(document).on("click", "#fight", function () {
         $(".choiceBox").html("<h2>Time to Battle!</h2>");
-        var leftShip = $("<img src='assets/images/Ships/" + myShip + ".jpg' alt='" + myShip + "'>");
-        var rightShip = $("<img src='assets/images/Ships/" + opponentShip + ".jpg' alt='" + opponentShip + "'>");
+        var leftShip = $("<img src='assets/images/Ships/" + myShip + ".jpg' alt='" + myShip + "'class='leftShip'>");
+        var rightShip = $("<img src='assets/images/Ships/" + opponentShip + ".jpg' alt='" + opponentShip + "' class='rightShip'>");
         var fireButton = $("<button class='proceedButton fireButton' id='fight'>Fire</button>")
         $(".choiceBox").append("<div id=battleScreen>", leftShip, rightShip, fireButton, "<span id=notification></span></div>");
     });
     $(document).on("click", ".fireButton", function () {
-        $("#notification").html("<p>You took " + fireLevel + " off their sheild</p>");
+        $("#notification").html("<p>You took " + fireLevel + " off their sheild</p><p>They returned fire with 25 damage</p>");
         opponentShield -= fireLevel;
-        mySheild -= 6;
-        fireLevel += 6;
-        update();
-        if(mySheild<=0){
-            //i ded()
-            alert("i ded");
-        }
-        else if(opponentShield<=0) {
+        if (opponentShield <= 0) {
             //they ded()
-            alert("they ded");
+            opponentShield = 0;
+            update();
+            $(".choiceBox").html("<h2>You Are Victorious!</h2>");
+            var leftShip = $("<img src='assets/images/Ships/" + myShip + ".jpg' alt='" + myShip + "'class='leftShip'>");
+            var rightShip = $("<img src='assets/images/explosion.gif' alt='" + opponentShip + "' class='rightShip'>");
+            var fireButton = $("<button class='proceedButton ' id='pickOpponent'>Find Next Opponent</button>")
+            $(".choiceBox").append("<div id=battleScreen>", leftShip, rightShip, fireButton, "<span id=notification></span></div>");
+            return;
         }
+        mySheild -= 25;
+        fireLevel += 15;
+        if (mySheild <= 0) {
+            //i ded()
+            mySheild = 0;
+            update();
+            $(".choiceBox").html("<h2>You Are Defeated!</h2>");
+            var leftShip = $("<img src='assets/images/explosion.gif' alt='Boom'class='leftShip'>");
+            var rightShip = $("<img src='assets/images/Ships/" + opponentShip + ".jpg' alt='" + opponentShip + "' class='rightShip'>");
+            var fireButton = $("<button class='proceedButton ' id='startOver'>Play Again</button>")
+            $(".choiceBox").append("<div id=battleScreen>", leftShip, rightShip, fireButton, "<span id=notification></span></div>");
+            return;
+        }
+        update();
     });
+
+    $(document).on("click", "#startOver", function () {
+        $(".main-screen").html("");
+        initialScreen();
+    });
+
+
+    initialScreen();
 
 });
