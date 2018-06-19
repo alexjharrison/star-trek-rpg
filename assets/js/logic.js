@@ -58,7 +58,7 @@ var update = function () {
     }
     if (opponentAlliance !== "") {
         $("#opponent-info").html("<div><img src='assets/images/Captains/" + opponentCaptain + ".jpg' alt='" + opponentCaptain + "'><p>" + opponentCaptain + "</p></div><div><img src='assets/images/Ships/" + opponentShip + ".jpg' alt='" + opponentShip + "'><p>" + opponentShip + "</p></div><div><img src='assets/images/Logos/" + opponentAlliance.shortName + "_logo.png' alt='" + opponentAlliance.shortName + "'><p>" + opponentAlliance.fullName + "</p></div>");
-        $("#yourHP").html(opponentAlliance.shieldHP);
+        $("#theirHP").html(opponentAlliance.shieldHP);
     }
     else {
         $("#opponent-info").html("");
