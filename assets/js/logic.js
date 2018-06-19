@@ -1,28 +1,32 @@
 var myAlliance, myCaptain, myShip, opponentAlliance, opponentShip, opponentCaptain, mySheild, opponentShield, opponentsLeft;
 
 var federation = {
+    shieldHP: 140,
     fullName: "United Federation of Planets",
     shortName: "federation",
     fighter: ["Picard", "Sisko", "Janeway"],
     ship: ["Enterprise-D", "Defiant", "Voyager"]
 }
 var klingon = {
+    shieldHP: 160,
     fullName: "Klingon Empire",
     shortName: "klingon",
-    fighter: ["General Martok", "T'Kuvma", "Chancellor Gowron"],
+    fighter: ["General Martok", "TKuvma", "Chancellor Gowron"],
     ship: ["IKS Rotarran", "The Sarcophagus", "IKS Bortas"]
 }
 var romulan = {
+    shieldHP: 120,
     fullName: "Romulan Star Empire",
     shortName: "romulan",
     fighter: ["Nero", "Sela", "Commander Toreth"],
     ship: ["Narada", "Enterprise-C", "IRW Khazara"]
 }
 var dominion = {
+    shieldHP: 100,
     fullName: "Dominion",
     shortName: "dominion",
-    fighter: ["Female Changeling", "Jem'Hadar", "Gul Dukat"],
-    ship: ["The Great Link", "Jem'Hadar Fighter", "Dukat's Bird-of-Prey"]
+    fighter: ["Female Changeling", "Jem Hadar", "Gul Dukat"],
+    ship: ["The Great Link", "Jem Hadar Fighter", "Dukats Bird-of-Prey"]
 }
 
 var initialScreen = function () {
@@ -78,7 +82,9 @@ var pickCapAndShip = function (which) {
 }
 
 var showCapAndShip = function() {
-    $(".choiceBox").html("");
+    $(".choiceBox").html("<h2>Your Captain & Ship</h2><div class='characterPick'><img src='assets/images/Captains/"+myCaptain+".jpg' alt='"+myCaptain+"'><p>"+myCaptain+"</p></div><div class='characterPick'><img src='assets/images/Ships/"+myShip+".jpg' alt='"+myShip+"'><p>"+myShip+"</p></div><button class='proceedButton' id='pickOpponent'>Pick Opponent</button>");
+
+
 }
 
 $(document).ready(function () {
@@ -104,6 +110,9 @@ $(document).ready(function () {
         myAlliance = dominion;
         pickCapAndShip("mine");
         showCapAndShip();
+    });
+    $(document).on("click", "#pickOpponent", function () {
+        console.log("hi");
     });
 
 

@@ -97,6 +97,11 @@ img {
     color:#fdcd06;
 }
 
+.your-player img, .your-opponents img {
+    border-radius: 50%;
+    max-width: 50px;
+}
+
 .choiceBox {
     display: flex;
     flex-wrap: wrap;
@@ -105,9 +110,25 @@ img {
     text-align: center;
  } 
 
+ .characterPick {
+     max-width: 60%;
+ }
+
 .left-column img {
     max-height:50px;
     max-width: 50px;
     margin: 0;
-    padding: 10px;;
+    padding: 10px;
+}
+
+.proceedButton {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    color: #165fc5;
+    background-color: #fdcd06;
+    font-family: tng-text;
+    border: 2px outset #165fc5;
+    margin: 40px;
+    font-weight: bold;
 }
