@@ -144,3 +144,11 @@ img {
     margin: 40px;
     font-weight: bold;
 }
+
+#battleScreen {
+
+}
+
+#battleScreen img {
+    max-width: 20px;
+}
