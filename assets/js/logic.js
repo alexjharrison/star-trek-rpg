@@ -173,7 +173,7 @@ $(document).ready(function () {
         $(".choiceBox").append("<div id=battleScreen>", leftShip, rightShip, fireButton, "<span id=notification></span></div>");
     });
     $(document).on("click", ".fireButton", function () {
-        $("#notification").html("<p>You took " + fireLevel + " off their sheild</p><p>They returned fire with 25 damage</p>");
+        $("#notification").html("<p>You took " + fireLevel + " off their shield</p><p>They returned fire with 25 damage</p>");
         opponentShield -= fireLevel;
         if (opponentShield <= 0) {
             //they ded()
