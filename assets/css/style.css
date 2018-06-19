@@ -97,6 +97,11 @@ img {
     color:#fdcd06;
 }
 
+.your-player p, .your-opponents p {
+    font-size: 13px;
+    text-align:center;
+}
+
 .your-player img, .your-opponents img {
     border-radius: 50%;
     max-width: 50px;

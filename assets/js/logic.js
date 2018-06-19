@@ -49,14 +49,14 @@ var initialScreen = function () {
 
 var update = function () {
     //update 
-    if (myAlliance === "") {
-        $("#player-info").html("");
+    if (myAlliance !== "") {
+        $("#player-info").html("<div class='characterPick'><img src='assets/images/Captains/"+myCaptain+".jpg' alt='"+myCaptain+"'><p>"+myCaptain+"</p>");
         $("#yourHP").html("");
     }
     else {
         //if you pick a side stuff goes here
     }
-    if (opponentAlliance === "") {
+    if (opponentAlliance !== "") {
         $("#opponent-info").html("");
         $("#theirHP").html("");
     }
@@ -84,7 +84,7 @@ var pickCapAndShip = function (which) {
 var showCapAndShip = function() {
     $(".choiceBox").html("<h2>Your Captain & Ship</h2><div class='characterPick'><img src='assets/images/Captains/"+myCaptain+".jpg' alt='"+myCaptain+"'><p>"+myCaptain+"</p></div><div class='characterPick'><img src='assets/images/Ships/"+myShip+".jpg' alt='"+myShip+"'><p>"+myShip+"</p></div><button class='proceedButton' id='pickOpponent'>Pick Opponent</button>");
 
-
+    update();
 }
 
 $(document).ready(function () {
