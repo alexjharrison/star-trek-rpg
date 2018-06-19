@@ -115,9 +115,16 @@ img {
     text-align: center;
  } 
 
- .characterPick {
-     max-width: 60%;
+ #player-info, #opponent-info {
+     display:flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
  }
+
+ #player-info p, #player-info img, #opponent-info p, #opponent-info img {
+     padding: 0;
+     font-size: 12px;
+ } 
 
 .left-column img {
     max-height:50px;
